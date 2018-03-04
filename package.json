@@ -4,9 +4,14 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
-    "webpack": "^3.10.0"
+
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "compression": "^1.7.1",
+    "express": "^4.16.2",
+    "webpack": "^3.10.0",
+    "yargs": "^10.0.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
