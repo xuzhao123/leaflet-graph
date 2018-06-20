@@ -1,4 +1,4 @@
-export let MathHelper = {
+let MathHelper = {
 
     /**
      * 点类
@@ -95,3 +95,5 @@ export let MathHelper = {
         return Math.acos(x1 / (Math.sqrt(x1 * x1 + y1 * y1)));
     }
 };
+
+export default MathHelper;

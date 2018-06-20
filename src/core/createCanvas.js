@@ -1,6 +1,6 @@
 import L from 'leaflet';
 
-export function createCanvas(map) {
+export default function createCanvas(map) {
     let canvas = L.DomUtil.create('canvas', 'leaflet-point-layer leaflet-layer');
 
     let originProp = L.DomUtil.testProp(['transformOrigin', 'WebkitTransformOrigin', 'msTransformOrigin']);

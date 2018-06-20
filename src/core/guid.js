@@ -1,5 +1,5 @@
 let idStart = 0x0907;
 
-export function guid() {
-    return idStart+++'';
+export default function guid() {
+    return idStart++ + '';
 }

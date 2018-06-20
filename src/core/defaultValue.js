@@ -1,4 +1,4 @@
-export function defaultValue(a, b) {
+export default function defaultValue(a, b) {
     if (a !== undefined && a !== null) {
         return a;
     }

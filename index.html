@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>demo</title>
@@ -9,23 +10,26 @@
             padding: 0;
         }
 
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
         }
     </style>
 </head>
+
 <body>
 
-<div id="map"></div>
-<img width="400" src="Resource/bubble.gif" onclick="change('bubble')">
-<img width="400" src="Resource/images.gif" onclick="change('images')">
-<img width="400" src="Resource/point.gif" onclick="change('point')">
-<script>
-    function change(d) {
-        location.href = 'expamples/' + d + '.html';
-    }
-</script>
+    <div id="map"></div>
+    <img width="400" src="./resource/bubble.gif" onclick="change('bubble')">
+    <img width="400" src="./resource/images.gif" onclick="change('images')">
+    <img width="400" src="./resource/point.gif" onclick="change('point')">
+    <script>
+        function change(d) {
+            location.href = d + '.html';
+        }
+    </script>
 
 </body>
+
 </html>

@@ -1,9 +1,7 @@
 import L from 'leaflet';
 
-import {Points} from './Points';
-import {GrapgLayer} from '../graph/leaflet-graph';
-
-
+import Points from './Points';
+import GraphLayer from '../graph/leaflet-graph';
 
 L.PointLayer = L.GraphLayer.extend({
 

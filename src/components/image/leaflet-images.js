@@ -1,7 +1,6 @@
 import L from 'leaflet';
-
-import {Images} from './Images';
-import {GrapgLayer} from '../graph/leaflet-graph';
+import Images from './Images';
+import GraphLayer from '../graph/leaflet-graph';
 
 
 L.ImageLayer = L.GraphLayer.extend({

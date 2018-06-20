@@ -261,62 +261,56 @@ function stringify(arrColor, type) {
     return type + '(' + colorStr + ')';
 }
 
+export default class Color {
+    constructor(r, g, b, a) {
+        if (Object.prototype.toString.call(r) == '[object Array]') {
+            this.r = r[0];
+            this.g = r[1];
+            this.b = r[2];
+            this.a = r[3];
+        } else {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
+        }
 
-function Color(r, g, b, a) {
-    if (Object.prototype.toString.call(r) == '[object Array]') {
-        this.r = r[0];
-        this.g = r[1];
-        this.b = r[2];
-        this.a = r[3];
-    } else {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.a = a;
+        this.r = this.r == null ? 255 : this.r;
+        this.g = this.g == null ? 255 : this.g;
+        this.b = this.b == null ? 255 : this.b;
+        this.a = this.a == null ? 1 : this.a;
     }
 
-    this.r = this.r == null ? 255 : this.r;
-    this.g = this.g == null ? 255 : this.g;
-    this.b = this.b == null ? 255 : this.b;
-    this.a = this.a == null ? 1 : this.a;
-}
+    static parse(colorStr) {
+        var arrColor = parseColor(colorStr),
+            color = new Color(arrColor);
 
-Color.prototype.toArray = function () {
-    return [this.r, this.g, this.b, this.a];
+        return color;
+    }
+
+    static clone(color) {
+        return new Color(color.r, color.g, color.b, color.a);
+    }
+
+    toArray() {
+        return [this.r, this.g, this.b, this.a];
+    }
+
+    toRGBA() {
+        var arrColor = this.toArray();
+        return stringify(arrColor, 'rgba');
+    }
+
+    withAlpha(alpha) {
+        this.a = alpha;
+        return this;
+    }
+
+    withAlphaRatio(ratio) {
+        this.a *= ratio;
+        return this;
+    }
 };
-
-Color.prototype.toRGBA = function () {
-    var arrColor = this.toArray();
-    return stringify(arrColor, 'rgba');
-};
-
-Color.prototype.toRGB = function () {
-    var arrColor = this.toArray();
-    return stringify(arrColor, 'rgb');
-};
-
-Color.prototype.withAlpha = function (alpha) {
-    this.a = alpha;
-    return this;
-};
-
-Color.prototype.withAlphaRatio = function (ratio) {
-    this.a *= ratio;
-    return this;
-};
-
-Color.parse = function (colorStr) {
-    var arrColor = parseColor(colorStr),
-        color = new Color(arrColor);
-
-    return color;
-};
-
-Color.clone = function (color) {
-    return new Color(color.r, color.g, color.b, color.a);
-};
-
-export {Color};
 
 
 

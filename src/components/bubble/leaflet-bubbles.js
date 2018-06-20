@@ -1,9 +1,7 @@
 import L from 'leaflet';
 
-import {Bubbles} from './Bubbles';
-import {GrapgLayer} from '../graph/leaflet-graph';
-
-
+import Bubbles from './Bubbles';
+import GrapgLayer from '../graph/leaflet-graph';
 
 L.BubbleLayer = L.GraphLayer.extend({
 

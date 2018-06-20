@@ -1,30 +1,21 @@
-import {requestAnimationFrame} from './requestAnimationFrame';
-import {defaultValue} from '../core/defaultValue';
+import requestAnimationFrame from './requestAnimationFrame';
+import defaultValue from '../core/defaultValue';
 
-export let Animation = function (options) {
+export default class Animation {
 
-    this._type = Animation.Type.Stop;
+    constructor(options) {
+        this._type = Animation.Type.Stop;
 
-    this._needRefresh = true;
+        this._needRefresh = true;
 
-    this._start;
-    this._pause;
-    this._pauseTime = 0;
+        this._start;
+        this._pause;
+        this._pauseTime = 0;
 
-    this._merge(options);
-};
+        this._merge(options);
+    }
 
-Animation.Type = {
-    Run: 1,
-    Stop: 2,
-    Pause: 3
-};
-
-Animation.prototype = {
-
-    constructor: Animation,
-
-    _merge: function (options) {
+    _merge(options) {
         options = defaultValue(options, defaultValue.EMPTY_OBJECT);
 
         /**
@@ -47,9 +38,9 @@ Animation.prototype = {
          * @private
          */
         this._repeat = defaultValue(options.repeat, false);
-    },
+    }
 
-    _update: function () {
+    _update() {
         let percentage;
 
         if (this._repeat) {
@@ -62,9 +53,9 @@ Animation.prototype = {
         }
 
         this._frame(percentage);
-    },
+    }
 
-    _startLoop: function () {
+    _startLoop() {
 
         function step() {
             if (this._type !== Animation.Type.Stop) {
@@ -79,74 +70,80 @@ Animation.prototype = {
 
         requestAnimationFrame(step);
 
-    },
+    }
 
     /**
      * 是否正在执行
      * @returns {boolean}
      */
-    isRun: function () {
+    isRun() {
         return this._type === Animation.Type.Run;
-    },
+    }
 
     /**
      * 是否暂停
      * @returns {boolean}
      */
-    isPause: function () {
+    isPause() {
         return this._type === Animation.Type.Pause;
-    },
+    }
 
     /**
      * 是否停止
      * @returns {boolean}
      */
-    isStop: function () {
+    isStop() {
         return this._type === Animation.Type.Stop;
-    },
+    }
 
     /**
      * 开始
      */
-    start: function () {
+    start() {
         this._type = Animation.Type.Run;
         this._start = new Date();
         this._pauseTime = 0;
 
         this._startLoop();
-    },
+    }
 
     /**
      * 停止
      */
-    stop: function () {
+    stop() {
         this._type = Animation.Type.Stop;
-    },
+    }
 
     /**
      * 暂停
      */
-    pause: function () {
+    pause() {
         if (this._type !== Animation.Type.Pause) {
             this._type = Animation.Type.Pause;
             this._pause = new Date();
         }
-    },
+    }
 
     /**
      * 恢复
      */
-    resume: function () {
+    resume() {
         if (this._type === Animation.Type.Pause) {
             this._type = Animation.Type.Run;
             this._pauseTime += new Date() - this._pause;
         }
-    },
+    }
 
     /**
      * 释放
      */
-    dispose: function () {
+    dispose() {
         this.stop();
     }
+}
+
+Animation.Type = {
+    Run: 1,
+    Stop: 2,
+    Pause: 3
 };

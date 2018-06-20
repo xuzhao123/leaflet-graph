@@ -1,3 +1,3 @@
-export function defined(value) {
+export default function defined(value) {
     return value !== undefined && value !== null;
 }

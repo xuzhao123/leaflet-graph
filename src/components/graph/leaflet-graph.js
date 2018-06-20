@@ -1,7 +1,7 @@
 import L from 'leaflet';
 
-import {createCanvas} from '../../core/createCanvas';
-import {defaultValue} from '../../core/defaultValue';
+import createCanvas from '../../core/createCanvas';
+import defaultValue from '../../core/defaultValue';
 
 L.GraphLayer = L.Layer.extend({
 

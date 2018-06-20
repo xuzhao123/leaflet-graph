@@ -1,28 +1,26 @@
-import {Color} from '../../core/Color';
-import {inherit} from '../../core/inherit';
+import Color from '../../core/Color';
 
-import {Graph} from '../graph/Graph';
+import Graph from '../graph/Graph';
 
-export let Bubbles = function (canvas, options) {
-    Graph.apply(this, arguments);
-};
-
-Bubbles.prototype = {
+export default class Bubbles extends Graph {
+    constructor(canvas, options) {
+        super(canvas, options);
+    }
 
     /**
-     * 合并配置项
-     * @private
-     */
-    _merge: function () {
+    * 合并配置项
+    * @private
+    */
+    _merge() {
 
-    },
+    }
 
     /**
      * 内部绘制
      * @param data
      * @private
      */
-    _draw: function (data) {
+    _draw(data) {
         let ctx = this._ctx;
         var r = this._percentage * data.radius;
         let grd = ctx.createRadialGradient(data.x, data.y, 0, data.x, data.y, r);
@@ -33,14 +31,12 @@ Bubbles.prototype = {
         ctx.beginPath();
         ctx.arc(data.x, data.y, r, 0, 2 * Math.PI);
         ctx.fill();
-    },
+    }
 
     /**
      * 释放
      */
-    dispose: function () {
+    dispose() {
         this._dispose();
     }
 };
-
-inherit(Bubbles, Graph);
