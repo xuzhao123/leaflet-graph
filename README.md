@@ -16,11 +16,11 @@ npm run start
 
 ### Example
 
-动画圆
+动画圆  
 <img width="400" src="https://github.com/xuzhao123/leaflet-graph/blob/master/resource/bubble.gif"/>
 
-图片
+图片  
 <img width="400" src="https://github.com/xuzhao123/leaflet-graph/blob/master/resource/images.gif"/>
 
-点
+点  
 <img width="400" src="https://github.com/xuzhao123/leaflet-graph/blob/master/resource/point.gif"/>
